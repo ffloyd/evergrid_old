@@ -4,7 +4,7 @@ Navbar = React.createClass({
       <nav className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">SciHub</a>
+            <a className="navbar-brand" href="#">Evergrid</a>
           </div>
           <div className="navbar-right">
             <button type="button" className="btn btn-default navbar-btn">
