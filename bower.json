@@ -1,0 +1,8 @@
+{
+  "name": "SciHub",
+  "version": "0.0.1",
+  "dependencies": {
+    "primer-css": "*"
+  },
+  "private": true
+}
