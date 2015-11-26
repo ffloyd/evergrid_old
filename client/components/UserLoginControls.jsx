@@ -3,6 +3,7 @@ UserLoginControls = React.createClass({
 
   getMeteorData() {
     return {
+      ready: Accounts.loginServicesConfigured(),
       user: Meteor.user(),
     };
   },
@@ -36,7 +37,7 @@ UserLoginControls = React.createClass({
   },
 
   render() {
-    if (!Accounts.loginServicesConfigured()) {
+    if (!this.data.ready) {
       return (
         <div className="navbar-right">
           <span className="navbar-text">Login service isn't configured yet</span>

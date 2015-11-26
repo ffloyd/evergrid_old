@@ -1,0 +1,23 @@
+{
+  "servers": [
+    {
+      "host": "95.85.6.60",
+      "username": "root",
+      "pem": "~/.ssh/id_rsa"
+    }
+  ],
+
+  "setupMongo": true,
+
+  "appName": "evergrid",
+
+  "app": ".",
+
+  "env": {
+    "ROOT_URL": "http://95.85.6.60"
+  },
+
+  "deployCheckWaitTime": 15,
+
+  "enableUploadProgressBar": true
+}
