@@ -6,13 +6,7 @@ Navbar = React.createClass({
           <div className="navbar-header">
             <a className="navbar-brand" href="#">Evergrid</a>
           </div>
-          <div className="navbar-right">
-            <button type="button" className="btn btn-default navbar-btn">
-              <i className="fa fa-github"/>
-              &nbsp;
-              Sign In
-            </button>
-          </div>
+          <UserLoginControls />
         </div>
       </nav>
     );

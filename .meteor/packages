@@ -18,6 +18,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 react
 accounts-github
-accounts-ui
 twbs:bootstrap
 fortawesome:fontawesome
