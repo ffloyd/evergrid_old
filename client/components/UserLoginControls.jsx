@@ -36,6 +36,14 @@ UserLoginControls = React.createClass({
   },
 
   render() {
+    if (!Accounts.loginServicesConfigured()) {
+      return (
+        <div className="navbar-right">
+          <span className="navbar-text">Login service isn't configured yet</span>
+        </div>
+      )
+    }
+
     const inner = this.data.user ? this.renderAuthorized() : this.renderUnauthorized();
     return (
       <div className="navbar-right">
