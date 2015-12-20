@@ -1,0 +1,1 @@
+Link = ReactRouter.Link;

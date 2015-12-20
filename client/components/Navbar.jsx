@@ -4,7 +4,7 @@ Navbar = React.createClass({
       <nav className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">Evergrid</a>
+            <Link className="navbar-brand" to="/">Evergrid</Link>
           </div>
           <UserLoginControls />
         </div>

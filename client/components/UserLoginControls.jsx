@@ -31,7 +31,7 @@ UserLoginControls = React.createClass({
 
   renderAuthorized() {
     return [
-      <span className="navbar-text" key="name">{this.data.user.profile.name}</span>,
+      <Link className="navbar-text" key="name" to="/my_profile">{this.data.user.profile.name}</Link>,
       <a className="btn btn-default navbar-btn" onClick={this.handleLogout} key="logout">Logout</a>
     ];
   },

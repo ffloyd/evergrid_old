@@ -3,6 +3,7 @@ App = React.createClass({
     return (
       <div>
         <Navbar/>
+        {this.props.children}
       </div>
     );
   },
