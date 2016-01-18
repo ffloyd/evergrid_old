@@ -20,12 +20,7 @@ MyProfile = React.createClass({
       <div>
         <h2>User profile</h2>
         <form className="form-horizontal">
-          <div className="form-group">
-            <label htmlFor="name" className="col-md-2 control-label">Public Name</label>
-            <div className="col-md-10">
-              <input type="text" className="form-control" value={this.data.profile.name} onChange={this.onNameChange}></input>
-            </div>
-          </div>
+          <TextInput value={this.data.profile.name} onChange={this.onNameChange}>Name</TextInput>
         </form>
       </div>
     );
