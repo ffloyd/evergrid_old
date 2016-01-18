@@ -1,5 +1,5 @@
 UserLoginControls = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, ReactRouter.History],
 
   getMeteorData() {
     return {
@@ -17,6 +17,7 @@ UserLoginControls = React.createClass({
 
   handleLogout() {
     Meteor.logout();
+    this.history.pushState(null, '/');
   },
 
   renderUnauthorized() {
