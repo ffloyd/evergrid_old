@@ -27,3 +27,9 @@ aldeed:collection2
 mdg:validated-method
 zimme:collection-timestampable
 momentjs:moment
+
+# temporary fix for mupx
+
+react-runtime@=0.14.3
+react-runtime-dev@=0.14.3
+react-runtime-prod@=0.14.3
