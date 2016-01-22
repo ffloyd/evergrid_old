@@ -4,6 +4,7 @@ Schemas.Datasets = new SimpleSchema({
   name: {
     type: String,
     label: 'Name',
+    min: 4,
     max: 200,
   },
   description: {
@@ -18,6 +19,8 @@ Schemas.Datasets = new SimpleSchema({
 });
 
 Datasets.attachSchema(Schemas.Datasets);
+
+Datasets.attachBehaviour('timestampable');
 
 Datasets.methods = {};
 

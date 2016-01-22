@@ -7,7 +7,8 @@ Button = React.createClass({
       ['lg', 'sm', 'xs']
     ),
     block: React.PropTypes.bool,
-    onClick: React.PropTypes.func.isRequired,
+    onClick: React.PropTypes.func,
+    to: React.PropTypes.string,
   },
 
   render() {
@@ -28,10 +29,19 @@ Button = React.createClass({
       classes += ' btn-block';
     }
 
-    return (
-      <button className={classes} onClick={this.props.onClick}>
-        {this.props.children}
-      </button>
-    );
+    if (this.props.onClick) {
+      return (
+        <button className={classes} onClick={this.props.onClick}>
+          {this.props.children}
+        </button>
+      );
+    }
+    else {
+      return (
+        <Link className={classes} to={this.props.to}>
+          {this.props.children}
+        </Link>
+      );
+    }
   },
 });

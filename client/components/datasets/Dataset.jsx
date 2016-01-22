@@ -9,6 +9,9 @@ Dataset = React.createClass({
     return (
       <Panel title={ds.name}>
         <p>{ds.description}</p>
+        <Right>
+          <p className="text-muted">Created at: {moment(ds.createdAt).format('lll')}</p>
+        </Right>
       </Panel>
     );
   }

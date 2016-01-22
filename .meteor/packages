@@ -25,3 +25,5 @@ reactrouter:react-router
 aldeed:simple-schema
 aldeed:collection2
 mdg:validated-method
+zimme:collection-timestampable
+momentjs:moment

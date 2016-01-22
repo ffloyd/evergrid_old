@@ -8,7 +8,10 @@ const AppRouter = (
       <IndexRoute component={Home}/>
       <Route path="my_profile"  component={MyProfile}/>
       <Route path="projects"    component={ProjectsPage}/>
-      <Route path="datasets"    component={DatasetsPage}/>
+      <Route path="datasets">
+        <IndexRoute component={DatasetsList}/>
+        <Route path="new" component={NewDataset}/>
+      </Route>
       <Route path="datacenters" component={DatacentersPage}/>
     </Route>
   </Router>

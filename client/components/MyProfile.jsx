@@ -18,7 +18,7 @@ MyProfile = React.createClass({
   render() {
     return (
       <div>
-        <h2>User profile</h2>
+        <PageHeader>User profile</PageHeader>
         <form className="form-horizontal">
           <TextInput value={this.data.profile.name} onChange={this.onNameChange}>Name</TextInput>
         </form>
