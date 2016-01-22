@@ -22,3 +22,6 @@ twbs:bootstrap
 fortawesome:fontawesome
 service-configuration
 reactrouter:react-router
+aldeed:simple-schema
+aldeed:collection2
+mdg:validated-method
