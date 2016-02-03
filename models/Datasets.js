@@ -6,11 +6,13 @@ Schemas.Datasets = new SimpleSchema({
     label: 'Name',
     min: 4,
     max: 200,
+    fieldType: FieldTypes.textInput,
   },
   description: {
     type: String,
     label: 'Description',
     optional: true,
+    fieldType: FieldTypes.textArea,
   },
   ownerId: {
     type: String,
@@ -41,9 +43,9 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.publish('datasets', () => {
+  Meteor.publish('datasets', function() {
     return Datasets.find({
-      ownerId: Meteor.userId,
+      ownerId: this.userId,
     });
   });
 }

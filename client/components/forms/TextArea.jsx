@@ -1,9 +1,9 @@
 TextArea = React.createClass({
   propTypes: {
-    value: React.PropTypes.any.isRequired,
+    value: React.PropTypes.string,
     rows: React.PropTypes.number,
     onChange: React.PropTypes.func.isRequired,
-    children: React.PropTypes.string,
+    label: React.PropTypes.string.isRequired,
   },
 
   defaultProps: {
@@ -13,7 +13,7 @@ TextArea = React.createClass({
   render() {
     return (
       <div className="form-group">
-        <label htmlFor="name" className="col-md-2 control-label">{this.props.children}</label>
+        <label htmlFor="name" className="col-md-2 control-label">{this.props.label}</label>
         <div className="col-md-10">
           <textarea className="form-control" rows={this.props.rows} value={this.props.value} onChange={this.props.onChange}/>
         </div>
