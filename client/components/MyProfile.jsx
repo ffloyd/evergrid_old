@@ -11,7 +11,7 @@ MyProfile = React.createClass({
     Meteor.users.update(
       {_id: Meteor.user()._id},
       {$set: {
-        profile: {name: event.target.value}
+        profile: {name: event.target.value},
       }});
   },
 

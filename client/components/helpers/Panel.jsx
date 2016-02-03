@@ -1,6 +1,7 @@
 Panel = React.createClass({
   propTypes: {
     title: React.PropTypes.string.isRequired,
+    children: React.PropTypes.node.isRequired,
   },
 
   render() {
@@ -14,5 +15,5 @@ Panel = React.createClass({
         </div>
       </div>
     );
-  }
+  },
 });

@@ -14,5 +14,5 @@ Dataset = React.createClass({
         </Right>
       </Panel>
     );
-  }
+  },
 });

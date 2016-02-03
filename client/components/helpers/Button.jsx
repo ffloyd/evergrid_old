@@ -9,6 +9,7 @@ Button = React.createClass({
     block: React.PropTypes.bool,
     onClick: React.PropTypes.func,
     to: React.PropTypes.string,
+    children: React.PropTypes.node.isRequired,
   },
 
   render() {
@@ -16,8 +17,7 @@ Button = React.createClass({
 
     if (this.props.type) {
       classes += ` btn-${this.props.type}`;
-    }
-    else {
+    } else {
       classes += ' btn-default';
     }
 
@@ -36,12 +36,11 @@ Button = React.createClass({
         </button>
       );
     }
-    else {
-      return (
-        <Link className={classes} to={this.props.to}>
-          {this.props.children}
-        </Link>
-      );
-    }
+
+    return (
+      <Link className={classes} to={this.props.to}>
+        {this.props.children}
+      </Link>
+    );
   },
 });

@@ -2,6 +2,7 @@ TextInput = React.createClass({
   propTypes: {
     value: React.PropTypes.any.isRequired,
     onChange: React.PropTypes.func.isRequired,
+    children: React.PropTypes.string,
   },
 
   render() {
@@ -13,5 +14,5 @@ TextInput = React.createClass({
         </div>
       </div>
     );
-  }
+  },
 });

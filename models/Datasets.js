@@ -33,7 +33,7 @@ Datasets.methods.create = new ValidatedMethod({
       description: description,
       ownerId: Meteor.userId(),
     });
-  }
+  },
 });
 
 if (Meteor.isClient) {
@@ -41,9 +41,9 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.publish('datasets', function() {
+  Meteor.publish('datasets', () => {
     return Datasets.find({
-      ownerId: this.userId,
+      ownerId: Meteor.userId,
     });
   });
 }

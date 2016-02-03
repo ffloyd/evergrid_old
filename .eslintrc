@@ -1,0 +1,44 @@
+{
+  extends: "airbnb",
+  env: {
+    meteor: true
+  },
+  rules: {
+    func-names: 0,
+    no-undef: 0,
+    react/react-in-jsx-scope: 0,
+    react/jsx-no-undef: 0,
+    react/sort-comp: [1, {
+      order: [
+        'lifecycle',
+        'everything-else',
+        '/^on.+$/',
+        'render'
+      ],
+      groups: {
+        lifecycle: [
+          'displayName',
+          'propTypes',
+          'contextTypes',
+          'childContextTypes',
+          'mixins',
+          'statics',
+          'defaultProps',
+          'constructor',
+          'getDefaultProps',
+          'getMeteorData',
+          'getInitialState',
+          'state',
+          'getChildContext',
+          'componentWillMount',
+          'componentDidMount',
+          'componentWillReceiveProps',
+          'shouldComponentUpdate',
+          'componentWillUpdate',
+          'componentDidUpdate',
+          'componentWillUnmount'
+        ]
+      }
+    }]
+  }
+}

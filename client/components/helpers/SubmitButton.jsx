@@ -1,6 +1,7 @@
 SubmitButton = React.createClass({
   propTypes: {
     disabled: React.PropTypes.bool,
+    children: React.PropTypes.node.isRequired,
   },
 
   render() {
@@ -9,5 +10,5 @@ SubmitButton = React.createClass({
         {this.props.children}
       </button>
     );
-  }
+  },
 });

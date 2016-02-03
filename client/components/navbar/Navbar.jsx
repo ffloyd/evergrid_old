@@ -15,5 +15,5 @@ Navbar = React.createClass({
         </div>
       </nav>
     );
-  }
+  },
 });

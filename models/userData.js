@@ -7,23 +7,23 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function() {
     ServiceConfiguration.configurations.upsert(
-      { service: "github" },
+      { service: 'github' },
       {
         $set: {
           clientId: Meteor.settings.githubClientId,
-          loginStyle: "popup",
+          loginStyle: 'popup',
           secret: Meteor.settings.githubSecret,
-        }
+        },
       }
     );
 
-    Meteor.publish("userData", function () {
+    Meteor.publish('userData', function() {
       if (this.userId) {
         return Meteor.users.find({_id: this.userId},
                                  {fields: {'email': 1}});
-      } else {
-        this.ready();
       }
+
+      this.ready();
     });
 
     Accounts.onCreateUser(function(options, user) {
@@ -32,7 +32,7 @@ if (Meteor.isServer) {
       }
 
       if (user.services.github) {
-        user.email    = user.services.github.email;
+        user.email = user.services.github.email;
         user.username = user.services.github.username;
       }
       return user;

@@ -1,4 +1,8 @@
-App = React.createClass({
+Evergrid = React.createClass({
+  propTypes: {
+    children: React.PropTypes.node.isRequired,
+  },
+
   render() {
     return (
       <div>

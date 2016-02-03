@@ -22,5 +22,5 @@ DatasetsList = React.createClass({
         </Col>
       </Row>
     );
-  }
+  },
 });

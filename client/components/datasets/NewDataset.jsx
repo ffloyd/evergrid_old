@@ -13,7 +13,7 @@ NewDataset = React.createClass({
     try {
       Datasets.methods.create.validate(this.state);
       valid = true;
-    } catch (e) {
+    } catch (err) {
       valid = false;
     } finally {
       return valid;
@@ -34,9 +34,9 @@ NewDataset = React.createClass({
 
   onSubmit(event) {
     event.preventDefault();
-    Meteor.call('Datasets.methods.create', this.state, (err, res) => {
+    Meteor.call('Datasets.methods.create', this.state, (err) => {
       if (err) {
-        alert('Something went wrong');
+        alert('Something went wrong'); // eslint-disable-line no-alert
       } else {
         this.history.pushState(null, '/datasets');
       }
@@ -58,5 +58,5 @@ NewDataset = React.createClass({
         </Col>
       </Row>
     );
-  }
+  },
 });

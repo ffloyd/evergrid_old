@@ -3,6 +3,7 @@ TextArea = React.createClass({
     value: React.PropTypes.any.isRequired,
     rows: React.PropTypes.number,
     onChange: React.PropTypes.func.isRequired,
+    children: React.PropTypes.string,
   },
 
   defaultProps: {
@@ -18,5 +19,5 @@ TextArea = React.createClass({
         </div>
       </div>
     );
-  }
+  },
 });
