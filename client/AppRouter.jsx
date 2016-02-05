@@ -12,7 +12,10 @@ const AppRouter = (
         <IndexRoute component={DatasetsList}/>
         <Route path="new" component={NewDataset}/>
       </Route>
-      <Route path="datacenters" component={DatacentersPage}/>
+      <Route path="datacenters">
+        <IndexRoute component={DatacentersList}/>
+        <Route path="new" component={NewDatacenter}/>
+      </Route>
     </Route>
   </Router>
 );
