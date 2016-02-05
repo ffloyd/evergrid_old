@@ -4,6 +4,7 @@ FieldTypes = { // List of possible field types
   textInput: 'textInput',
   textArea: 'textArea',
   radioButtons: 'radioButtons',
+  fileUpload: 'fileUpload',
 };
 
 SimpleSchema.extendOptions({

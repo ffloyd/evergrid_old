@@ -16,6 +16,7 @@ FormBuilder = React.createClass({
   getInitialState() {
     return {
       values: this.props.defaultValues,
+      fileValues: {},
       context: this.props.schema.newContext(),
       validateEveryChange: false,
     };
@@ -39,6 +40,7 @@ FormBuilder = React.createClass({
       }
       const commonProps = {
         key: field,
+        field: field,
         label: config.label,
         value: this.state.values[field],
         error: error,
@@ -46,7 +48,6 @@ FormBuilder = React.createClass({
       };
       const selectionProps = {
         options: config.humanOptions,
-        field: field,
       };
 
       switch (config.fieldType) {
@@ -55,6 +56,9 @@ FormBuilder = React.createClass({
         break;
       case FieldTypes.textArea:
         yield (<TextArea {...commonProps}/>);
+        break;
+      case FieldTypes.fileUpload:
+        yield (<FileUpload {...commonProps}/>);
         break;
       case FieldTypes.radioButtons:
         yield (<RadioButtons {...commonProps} {...selectionProps}/>);
@@ -74,6 +78,19 @@ FormBuilder = React.createClass({
     });
   },
 
+  updateFileField(field, inputValue, file) { // validationValue must be a standart String representation of file
+    this.setState({
+      values: {
+        ...this.state.values,
+        [field]: inputValue,
+      },
+      fileValues: {
+        ...this.state.fileValues,
+        [field]: file,
+      },
+    });
+  },
+
   onFieldChange(field, fieldType) {
     switch (fieldType) {
     case FieldTypes.textInput:
@@ -81,6 +98,10 @@ FormBuilder = React.createClass({
     case FieldTypes.radioButtons:
       return (event) => {
         this.updateField(field, event.target.value);
+      };
+    case FieldTypes.fileUpload:
+      return (event) => {
+        this.updateFileField(field, event.target.value, event.target.files[0]);
       };
     default:
       throw new Error('Unknown field type');
@@ -91,7 +112,7 @@ FormBuilder = React.createClass({
     event.preventDefault();
     this.state.context.validate(this.state.values);
     if (this.state.context.isValid()) {
-      this.props.onSubmit(this.state.values);
+      this.props.onSubmit({...this.state.values, ...this.state.fileValues});
     } else {
       this.setState({
         validateEveryChange: true,

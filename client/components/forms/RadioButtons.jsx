@@ -9,7 +9,7 @@ RadioButtons = React.createClass({
   },
 
   *renderOptions() {
-    options = this.props.options;
+    const options = this.props.options;
 
     for (const value of Object.keys(options)) {
       const label = options[value];
@@ -25,22 +25,10 @@ RadioButtons = React.createClass({
   },
 
   render() {
-    let formGroupClass = 'form-group';
-    let helpBlock;
-
-    if (this.props.error) {
-      formGroupClass += ' has-error';
-      helpBlock = <span className="help-block">{this.props.error}</span>;
-    }
-
     return (
-      <div className={formGroupClass}>
-        <label htmlFor="name" className="col-md-2 control-label">{this.props.label}</label>
-        <div className="col-md-10">
-          {[...this.renderOptions()]}
-          {helpBlock}
-        </div>
-      </div>
+      <InputWrapper field={this.props.field} label={this.props.label} error={this.props.error}>
+        {[...this.renderOptions()]}
+      </InputWrapper>
     );
   },
 });
