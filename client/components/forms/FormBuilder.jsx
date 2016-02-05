@@ -44,13 +44,20 @@ FormBuilder = React.createClass({
         error: error,
         onChange: this.onFieldChange(field, config.fieldType),
       };
+      const selectionProps = {
+        options: config.humanOptions,
+        field: field,
+      };
 
       switch (config.fieldType) {
-      case 'textInput':
+      case FieldTypes.textInput:
         yield (<TextInput {...commonProps}/>);
         break;
-      case 'textArea':
+      case FieldTypes.textArea:
         yield (<TextArea {...commonProps}/>);
+        break;
+      case FieldTypes.radioButtons:
+        yield (<RadioButtons {...commonProps} {...selectionProps}/>);
         break;
       default:
         throw new Error('Unknown field type');
@@ -69,8 +76,9 @@ FormBuilder = React.createClass({
 
   onFieldChange(field, fieldType) {
     switch (fieldType) {
-    case 'textInput':
-    case 'textArea':
+    case FieldTypes.textInput:
+    case FieldTypes.textArea:
+    case FieldTypes.radioButtons:
       return (event) => {
         this.updateField(field, event.target.value);
       };

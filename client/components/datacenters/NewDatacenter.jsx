@@ -12,13 +12,16 @@ NewDatacenter = React.createClass({
   },
 
   render() {
-    const schema = Schemas.Datacenters.pick(['name']);
+    const schema = Schemas.Datacenters.pick(['name', 'dcType']);
+    const defaultValues = {
+      dcType: schema.schema().dcType.allowedValues[0],
+    };
 
     return (
       <Row>
         <Col md={9}>
           <PageHeader>New Datacenter</PageHeader>
-          <FormBuilder schema={schema} onSubmit={this.onSubmit}/>
+          <FormBuilder schema={schema} defaultValues={defaultValues} onSubmit={this.onSubmit}/>
         </Col>
       </Row>
     );
