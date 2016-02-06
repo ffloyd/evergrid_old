@@ -16,7 +16,6 @@ FormBuilder = React.createClass({
   getInitialState() {
     return {
       values: this.props.defaultValues,
-      fileValues: {},
       context: this.props.schema.newContext(),
       validateEveryChange: false,
     };
@@ -57,8 +56,8 @@ FormBuilder = React.createClass({
       case FieldTypes.textArea:
         yield (<TextArea {...commonProps}/>);
         break;
-      case FieldTypes.fileUpload:
-        yield (<FileUpload {...commonProps}/>);
+      case FieldTypes.carinaConfig:
+        yield (<CarinaConfigField {...commonProps}/>);
         break;
       case FieldTypes.radioButtons:
         yield (<RadioButtons {...commonProps} {...selectionProps}/>);
@@ -78,19 +77,6 @@ FormBuilder = React.createClass({
     });
   },
 
-  updateFileField(field, inputValue, file) { // validationValue must be a standart String representation of file
-    this.setState({
-      values: {
-        ...this.state.values,
-        [field]: inputValue,
-      },
-      fileValues: {
-        ...this.state.fileValues,
-        [field]: file,
-      },
-    });
-  },
-
   onFieldChange(field, fieldType) {
     switch (fieldType) {
     case FieldTypes.textInput:
@@ -99,9 +85,9 @@ FormBuilder = React.createClass({
       return (event) => {
         this.updateField(field, event.target.value);
       };
-    case FieldTypes.fileUpload:
-      return (event) => {
-        this.updateFileField(field, event.target.value, event.target.files[0]);
+    case FieldTypes.carinaConfig:
+      return (newFileId) => {
+        this.updateField(field, newFileId);
       };
     default:
       throw new Error('Unknown field type');

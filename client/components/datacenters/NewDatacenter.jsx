@@ -2,19 +2,11 @@ NewDatacenter = React.createClass({
   mixins: [ReactRouter.History],
 
   onSubmit(fields) {
-    const file = fields.carinaConfig;
-    CarinaConfigs.insert(file, (fileErr, fileObj) => {
-      if (fileErr) {
-        alert('Incorrect file'); // eslint-disable-line no-alert
+    Meteor.call('Datacenters.methods.create', fields, 'Hello!', (err) => {
+      if (err) {
+        alert('Something went wrong'); // eslint-disable-line no-alert
       } else {
-        fields.carinaConfig = fileObj._id;
-        Meteor.call('Datacenters.methods.create', fields, 'Hello!', (err) => {
-          if (err) {
-            alert('Something went wrong'); // eslint-disable-line no-alert
-          } else {
-            this.history.pushState(null, '/datacenters');
-          }
-        });
+        this.history.pushState(null, '/datacenters');
       }
     });
   },

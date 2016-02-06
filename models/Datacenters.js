@@ -20,7 +20,8 @@ Schemas.Datacenters = new SimpleSchema({
   carinaConfig: { // store file reference as String. A very hackish logic. =/
     label: 'Carina config zip-file',
     type: String,
-    fieldType: FieldTypes.fileUpload,
+    regEx: SimpleSchema.RegEx.Id,
+    fieldType: FieldTypes.carinaConfig,
   },
   ownerId: {
     type: String,
@@ -37,7 +38,7 @@ Datacenters.helpers({
     return Schemas.Datacenters.schema().dcType.humanOptions[this.dcType];
   },
 
-  configUrl() { // FIXME: how to do it without file download?
+  configUrl() {
     const file = CarinaConfigs.findOne({_id: this.carinaConfig});
     return file.url();
   },
@@ -47,10 +48,7 @@ Datacenters.methods = {};
 
 Datacenters.methods.create = new ValidatedMethod({
   name: 'Datacenters.methods.create',
-  validate({name, dcType, carinaConfig}) { // eslint-disable-line no-unused-vars
-    const validator = Schemas.Datacenters.pick(['name', 'dcType']).validator();
-    validator({name, dcType});
-  },
+  validate: Schemas.Datacenters.pick(['name', 'dcType', 'carinaConfig']).validator(),
   run({name, dcType, carinaConfig}) {
     Datacenters.insert({
       name, dcType, carinaConfig,
@@ -64,7 +62,11 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.publish('datacenters', function() {
+  Meteor.smartPublish('datacenters', function() {
+    this.addDependency('Datacenters', 'carinaConfig', function(dc) {
+      return CarinaConfigs.find(dc.carinaConfig);
+    });
+
     return Datacenters.find({
       ownerId: this.userId,
     });

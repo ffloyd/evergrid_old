@@ -1,5 +1,5 @@
-CarinaConfigs = new FS.Collection('carina-configs', {
-  stores: [new FS.Store.FileSystem('carina-configs', {path: '~/uploads/carina-configs'})],
+CarinaConfigs = new FS.Collection('CarinaConfigs', {
+  stores: [new FS.Store.FileSystem('CarinaConfigs', {path: '~/uploads/carina-configs'})],
   filter: {
     maxSize: 100 * 1024 * 1024,
     allow: {
@@ -10,10 +10,13 @@ CarinaConfigs = new FS.Collection('carina-configs', {
 });
 
 CarinaConfigs.allow({
-  'insert': function() {
+  'insert': function(userId, fileObj) {
     return true;
   },
-  'update': function() {
+  'update': function(userId, fileObj) {
+    return true;
+  },
+  'download': function(userId, fileObj) {
     return true;
   },
 });
