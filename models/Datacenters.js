@@ -63,8 +63,8 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.smartPublish('datacenters', function() {
-    this.addDependency('Datacenters', 'carinaConfig', function(dc) {
-      return CarinaConfigs.find(dc.carinaConfig);
+    this.addDependency('Datacenters', 'CarinaConfigs', function(dc) {
+      return CarinaConfigs.find({_id: dc.carinaConfig, owner: dc.ownerId});
     });
 
     return Datacenters.find({

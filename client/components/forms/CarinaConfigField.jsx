@@ -14,7 +14,8 @@ CarinaConfigField = React.createClass({
   },
 
   onChange(event) {
-    const file = event.target.files[0];
+    const file = new FS.File(event.target.files[0]);
+    file.owner = Meteor.userId();
     this.setState({
       innerBlock: 'uploading',
       error: false,
